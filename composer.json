@@ -1,0 +1,93 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.0.2",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.19",
+        "laravel/sanctum": "^3.0",
+        "laravel/tinker": "^2.7"
+    },
+    "require-dev": {
+        "dg/bypass-finals": "^1.4",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "nunomaduro/larastan": "^2.2",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpstan/phpstan-strict-rules": "^1.4",
+        "phpunit/phpunit": "^9.5.10",
+        "rector/rector": "^0.14.2",
+        "rregeer/phpunit-coverage-check": "^0.3.1",
+        "slevomat/coding-standard": "^8.4",
+        "spatie/laravel-ignition": "^1.0",
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "phpcs": "phpcs --standard=./phpcs_codestyle.xml -n app",
+        "phpcs-fix": "phpcbf --standard=./phpcs_codestyle.xml -n app",
+        "phpcompatibility": "phpcs --standard=./phpcs_phpcompatibility.xml -n --runtime-set testVersion 8.1- app",
+        "phpstan": "phpstan analyse --memory-limit=2G",
+        "phpunit": "vendor/bin/phpunit -c phpunit.xml.dist",
+        "phpunitwcov": "XDEBUG_MODE=coverage vendor/bin/phpunit -c phpunit.xml.dist --coverage-html reports/ --coverage-clover coverage/clover.xml",
+        "phpcoverage": "coverage-check coverage/clover.xml 15",
+        "rector": " rector process database app",
+        "checkup": [
+            "@phpcs",
+            "@phpcompatibility",
+            "@phpstan",
+            "@phpunitwcov",
+            "@phpcoverage"
+        ],
+        "coveragecheck": [
+            "@phpunitwcov",
+            "@phpcoverage"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

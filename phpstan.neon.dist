@@ -1,0 +1,24 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+    - ./vendor/phpstan/phpstan/conf/bleedingEdge.neon
+
+services:
+    -
+        class: PHPStan\Rules\Cast\UselessCastRule
+        arguments:
+            treatPhpDocTypesAsCertain: %treatPhpDocTypesAsCertain%
+        tags:
+            - phpstan.rules.rule
+
+parameters:
+    tmpDir: storage/framework/cache/phpstan
+    paths:
+        - app
+
+    # level 9 is the highest level
+    level: 9
+
+    #excludePaths:
+    #    - ./path
+
+    checkMissingIterableValueType: true

@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es2020",
+        "moduleResolution": "node",
+        "baseUrl": "./",
+        "jsx": "react",
+        "strict": true,
+        "skipLibCheck": true,
+        "noImplicitAny": false,
+        "paths": {
+            "@/*": [
+                "resources/js/*",
+            ]
+        }
+    },
+    "include": ["resources/js/**/*"],
+    "exclude": ["node_modules", "public"]
+}
