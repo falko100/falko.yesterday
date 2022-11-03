@@ -1,5 +1,6 @@
 <?php
 
+use App\Services\CocktailDbClient;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    throw new \Symfony\Component\HttpKernel\Exception\NotFoundHttpException();
+});
+
+
+Route::get('/test', function () {
+    $cocktailDbClient = resolve(CocktailDbClient::class);
+    $cocktails = \App\Data\DatabaseCocktailData::collection($cocktailDbClient->getCocktailsByFirstLetter('e')['drinks']);
+    dd($cocktails);
 });

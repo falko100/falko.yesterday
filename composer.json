@@ -5,11 +5,12 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^8.0.2",
+        "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "spatie/laravel-data": "^2.0"
     },
     "require-dev": {
         "dg/bypass-finals": "^1.4",
@@ -44,7 +45,7 @@
         "phpcs": "phpcs --standard=./phpcs_codestyle.xml -n app",
         "phpcs-fix": "phpcbf --standard=./phpcs_codestyle.xml -n app",
         "phpcompatibility": "phpcs --standard=./phpcs_phpcompatibility.xml -n --runtime-set testVersion 8.1- app",
-        "phpstan": "phpstan analyse --memory-limit=2G",
+        "phpstan": "phpstan analyse --memory-limit=2G --xdebug",
         "phpunit": "vendor/bin/phpunit -c phpunit.xml.dist",
         "phpunitwcov": "XDEBUG_MODE=coverage vendor/bin/phpunit -c phpunit.xml.dist --coverage-html reports/ --coverage-clover coverage/clover.xml",
         "phpcoverage": "coverage-check coverage/clover.xml 15",

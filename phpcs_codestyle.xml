@@ -29,4 +29,7 @@
 
     <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInCall" />
     <rule ref="SlevomatCodingStandard.Functions.RequireTrailingCommaInDeclaration" />
+    <rule ref="Squiz.Functions.MultiLineFunctionDeclaration.EmptyLine">
+        <exclude-pattern>app/Data/*</exclude-pattern>
+    </rule>
 </ruleset>
