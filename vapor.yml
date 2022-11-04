@@ -7,5 +7,7 @@ environments:
     runtime: 'php-8.1:al2'
     build:
       - 'composer install --no-dev'
-      - 'php artisan event:cache'
+      - 'php artisan migrate'
+      - 'php artisan storage:link'
+      - 'php artisan optimize'
       - 'npm ci && npm run build && rm -rf node_modules'
